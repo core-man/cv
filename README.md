@@ -1,6 +1,6 @@
 # Yao Jiayuan's Curriculum Vitae
 
-[![Build](https://github.com/coreman/cv/actions/workflows/build.yaml/badge.svg)](https://github.com/coreman/cv/actions/workflows/build.yaml)
+[![Build](https://github.com/core-man/cv/actions/workflows/build.yaml/badge.svg)](https://github.com/core-man/cv/actions/workflows/build.yaml)
 
 These are the LaTeX sources for my academic CV.
 
