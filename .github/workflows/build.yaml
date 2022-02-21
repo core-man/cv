@@ -6,10 +6,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
-    # Schedule daily builds
-    schedule:
-      - cron: '0 0 1 * *'
+      - main
 
 jobs:
   build:
@@ -18,34 +15,18 @@ jobs:
 
     steps:
       - name: Cancel Previous Runs
-        uses: styfle/cancel-workflow-action@0.7.0
-        with:
-          access_token: ${{ github.token }}
+        uses: styfle/cancel-workflow-action@0.9.1
 
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install TinyTeX
         run: |
-          curl -sL "https://yihui.org/tinytex/install-bin-unix.sh" | sh
+          make install_tex
           echo "${HOME}/bin" >> $GITHUB_PATH
 
       - name: Install LaTeX packages
-        run: |
-          tlmgr install \
-            anyfontsize \
-            ctex \
-            datetime \
-            enumitem \
-            etaremune \
-            everysel \
-            fancyhdr \
-            fmtcount \
-            geometry \
-            hyperref \
-            sourcesanspro \
-            sourcecodepro \
-            xcolor
+        run: make install_packages
 
       - name: Build CV
         run: make
